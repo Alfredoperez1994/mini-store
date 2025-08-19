@@ -27,7 +27,7 @@ const CategoryGallery = ({ category, products, onClose, onAddToCart }) => {
                 className="add-btn"
                 onClick={() => onAddToCart(product)}
               >
-                Agregar
+                AGREGAR
               </button>
             </div>
           </div>

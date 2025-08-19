@@ -126,6 +126,7 @@
     .sticky-progress {
         width: 82%;
         padding: 8px 10px;
+        margin-top: 9px;
     }
 
     .progress-bar-container {
@@ -171,13 +172,13 @@
     }
 
     .dynamic-label {
-       display: none;
+        display: none;
     }
 }
 
 /* Laptops */
 @media (min-width: 992px) and (max-width: 1199px) {
-     .sticky-progress {
+    .sticky-progress {
         width: 90%;
         padding: 8px 20px;
     }
@@ -196,7 +197,7 @@
         font-weight: bold;
     }
 
-     .dynamic-label {
+    .dynamic-label {
         display: none;
     }
 }

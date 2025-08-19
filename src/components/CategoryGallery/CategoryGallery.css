@@ -71,7 +71,7 @@
   left: 8px;
   background: linear-gradient(90deg, #945791 0%, #8b6889 100%);
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: bold;
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
@@ -107,6 +107,7 @@
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1rem;
   width: 100%;
   transition: background 0.3s ease;
 }
