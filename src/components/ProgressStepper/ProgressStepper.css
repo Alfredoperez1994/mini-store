@@ -1,0 +1,227 @@
+/* ---------- Variables ---------- */
+:root {
+    --stepper-bg: rgba(255, 255, 255, 0.95);
+    --track: #f1f1f1;
+    --fill-start: #945791;
+    --fill-end: #8b6889;
+    --text-muted: #2E7D4F;
+    --ok: #22c55e;
+    /* verde */
+    --warn: #f59e0b;
+    /* amarillo */
+}
+
+/* ---------- Contenedor sticky ---------- */
+.sticky-progress {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background: var(--stepper-bg);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    width: 100%;
+    padding: 6px 10px;
+}
+
+/* ---------- Barra de progreso ---------- */
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background: var(--track);
+    border-radius: 9999px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--fill-start), var(--fill-end));
+    border-radius: 9999px;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-bar-fill.active {
+    filter: saturate(1.1);
+}
+
+/* ---------- Hitos ---------- */
+.milestones {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 6px;
+    align-items: start;
+}
+
+.milestone {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+.milestone .dot {
+    width: 12px;
+    height: 12px;
+    background: #d1d5db;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease, background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.milestone .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estados */
+.milestone.reached .dot {
+    background: var(--ok);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+    transform: scale(1.05);
+}
+
+.milestone.near-goal .dot {
+    background: var(--warn);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* Texto dinámico */
+.dynamic-label {
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    color: #333;
+}
+
+/* Animación pulse */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ---------- Responsive ---------- */
+
+/* Celulares chicos */
+@media (max-width: 575px) {
+    .sticky-progress {
+        width: 82%;
+        padding: 8px 10px;
+    }
+
+    .progress-bar-container {
+        height: 15px;
+    }
+
+    .milestone {
+        font-size: 7px;
+        font-weight: bold;
+    }
+
+    .milestone .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .milestone .label {
+        display: none;
+    }
+
+    .dynamic-label {
+        font-size: 13px;
+        padding: 4px 8px;
+        color: #2E7D4F;
+    }
+}
+
+/* Tablets */
+@media (min-width: 576px) and (max-width: 991px) {
+    .sticky-progress {
+        width: 90%;
+        padding: 8px 20px;
+    }
+
+    .progress-bar-container {
+        height: 12px;
+    }
+
+    .milestone {
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .dynamic-label {
+       display: none;
+    }
+}
+
+/* Laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+     .sticky-progress {
+        width: 90%;
+        padding: 8px 20px;
+    }
+
+    .progress-stepper {
+        max-width: 98%;
+        margin: 0 auto;
+    }
+
+    .progress-bar-container {
+        height: 14px;
+    }
+
+    .milestone {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+     .dynamic-label {
+        display: none;
+    }
+}
+
+/* Desktops grandes */
+@media (min-width: 1200px) {
+    .progress-stepper {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    .progress-bar-container {
+        height: 18px;
+    }
+
+    .milestone {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .milestone .dot {
+        width: 14px;
+        height: 14px;
+    }
+
+    .dynamic-label {
+        display: none;
+    }
+}

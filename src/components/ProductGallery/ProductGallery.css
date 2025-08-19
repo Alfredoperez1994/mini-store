@@ -1,0 +1,136 @@
+.product-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 80px;
+}
+
+.product-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+    background: white;
+    padding: 0.8rem;
+    text-align: center;
+}
+
+.product-image {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-info {
+    margin-top: 0.8rem;
+}
+
+.product-buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.product-buttons button {
+    flex: 1 1 48%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #945791 0%, #8b6889 100%);
+    border: 1px solid #8b6889;
+    color: #F9F4EE;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.5);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.product-buttons button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #8b6889 0%, #945791 100%);
+}
+
+/* --- CategoryGallery (horizontal scroll) --- */
+.category-gallery {
+    padding: 0.5rem 0;
+}
+
+.gallery-products {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-product-card {
+    flex: 0 0 140px;
+    background: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.gallery-product-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* 📱 Tablets chicas y celulares grandes */
+@media (min-width: 576px) {
+    .product-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-image {
+        height: 280px;
+    }
+}
+
+/* 📱 Tablets grandes y landscape */
+@media (min-width: 768px) {
+    .product-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-image {
+        height: 300px;
+    }
+
+    .product-buttons button {
+        flex: 1 1 45%;
+        font-size: 1rem;
+    }
+}
+
+/* 💻 Laptops */
+@media (min-width: 992px) {
+    .product-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product-image {
+        height: 320px;
+    }
+}
+
+/* 🖥️ Desktops grandes */
+@media (min-width: 1200px) {
+    .product-gallery {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .product-image {
+        height: 340px;
+    }
+
+    .product-buttons button {
+        width: 100%;
+    }
+}

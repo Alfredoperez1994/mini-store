@@ -1,0 +1,97 @@
+.mini-store {
+    margin: 0 auto;
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+    background-color: #F9F4EE;
+    color: #1F2937;
+    background-image: url("/img/fondo2.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Botón flotante FIJO en toda la app */
+.open-cart-btn {
+    position: fixed;
+    left: 20px;
+    bottom: 700px;
+    background: linear-gradient(90deg, #945791 0%, #8b6889 100%);
+    color: white;
+    border-radius: 30px;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid #8b6889;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.5);
+    cursor: pointer;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Contador del carrito */
+.cart-badge {
+    background: #ff3b3b;
+    color: white;
+    border-radius: 50%;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: relative;
+    top: -8px;
+    right: -4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    animation: pop 0.3s ease;
+}
+
+/* Animación al sumar productos */
+@keyframes pop {
+    0% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsivo */
+@media (min-width: 425px) {
+    .open-cart-btn {
+        font-size: 15px;
+        padding: 0.6rem 1rem;
+        bottom: 600px;
+    }
+
+    .cart-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .open-cart-btn {
+        font-size: 15px;
+        padding: 0.7rem 1.3rem;
+        bottom: 600px;
+    }
+}
+
+@media (min-width: 992px) {
+    .open-cart-btn {
+        font-size: 15px;
+        padding: 0.7rem 1.3rem;
+        bottom: 600px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .open-cart-btn {
+        font-size: 16px;
+        padding: 0.8rem 1.5rem;
+        bottom: 600px;
+    }
+}
