@@ -36,7 +36,7 @@
 
 .product-buttons button {
     flex: 1 1 48%;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: bold;
     padding: 0.5rem;
     border-radius: 5px;
@@ -81,7 +81,11 @@
     object-fit: cover;
     border-radius: 6px;
 }
-
+.product-category {
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: "Racing Sans One", sans-serif;
+}
 /* 📱 Tablets chicas y celulares grandes */
 @media (min-width: 576px) {
     .product-gallery {

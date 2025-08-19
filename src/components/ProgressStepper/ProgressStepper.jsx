@@ -19,7 +19,7 @@ const ProgressStepper = ({ cartItems }) => {
     const progressPercent = Math.min((totalQuantity / maxGoal) * 100, 100);
 
     // ---------- lógica para texto dinámico ----------
-    let dynamicLabel = "¡Mientras más compras, más descuento!";
+    let dynamicLabel = "¡MÁS COMPRAS, MÁS DESCUENTO!";
 
     for (let i = milestones.length - 1; i >= 0; i--) {
         if (totalQuantity >= milestones[i].amount) {

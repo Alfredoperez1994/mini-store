@@ -148,6 +148,7 @@
 
     .dynamic-label {
         font-size: 13px;
+        font-weight: bold;
         padding: 4px 8px;
         color: #2E7D4F;
     }

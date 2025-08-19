@@ -25,14 +25,13 @@ const ProductGallery = ({ products, onViewMore, onAddToCart }) => {
                         className="product-image"
                     />
                     <div className="product-info">
-                        <h3 className="product-name">{product.name}</h3>
                         <p className="product-category">{product.category}</p>
                         <p className="product-price">${product.price}</p>
                         <div className="product-buttons">
                             <button onClick={() => onViewMore(product.category)}>
                                 FRAGANCIAS DISPONIBLES
                             </button>
-                            <button onClick={() => onAddToCart(product)}>AGREGAR AL CARRITO</button>
+
                         </div>
                     </div>
                 </div>

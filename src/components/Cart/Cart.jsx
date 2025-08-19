@@ -20,10 +20,10 @@ const Cart = ({ cartItems, onRemoveFromCart }) => {
         benefitMessage = `Comprá ${6 - totalUnits} unidades más y obtené 10% OFF`;
     } else if (totalUnits < 20) {
         benefitMessage = `Comprá ${20 - totalUnits} unidades obtené envio gratis!!`;
-    } else if (totalUnits < 25) {
+    } else if (totalUnits < 24) {
         benefitMessage = `Comprá ${24 - totalUnits} unidades más y obtené 15% OFF`;
     } else if (totalUnits < 60) {
-        benefitMessage = `Comprá ${60 - totalUnits} más y obtené 25% OFF`;
+        benefitMessage = `Comprá ${60 - totalUnits} unidades más y obtené 25% OFF`;
     } else {
         benefitMessage = "¡Ya tenés 25% OFF + envío gratis en tu compra!";
     }
