@@ -49,6 +49,11 @@ const MiniStore = () => {
         );
     };
 
+    // Vaciar carrito completo
+    const handleClearCart = () => {
+        setCartItems([]);
+    };
+
     // Total de productos para el contador
     const totalQuantity = cartItems.reduce(
         (acc, item) => acc + item.quantity,
@@ -90,14 +95,17 @@ const MiniStore = () => {
             </button>
 
             {/* Carrito fijo abajo */}
-            <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+            <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} onAddToCart={handleAddToCart}
+                onClearCart={handleClearCart} />
 
             {/* Sidebar */}
             <CartSidebar
                 isOpen={isSidebarOpen}
                 onClose={() => setIsSidebarOpen(false)}
                 cartItems={cartItems}
+                onAddToCart={handleAddToCart}
                 onRemoveFromCart={handleRemoveFromCart}
+                onClearCart={handleClearCart}
             />
         </section>
     );

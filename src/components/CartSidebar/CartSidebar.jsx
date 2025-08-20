@@ -2,7 +2,7 @@ import React from "react";
 import "./CartSidebar.css";
 import { getGlobalDiscountRate } from "../../utils/discounts";
 
-const CartSidebar = ({ cartItems, onRemoveFromCart, isOpen, onClose }) => {
+const CartSidebar = ({ cartItems, onAddToCart, onRemoveFromCart, onClearCart, isOpen, onClose }) => {
     //  Cantidad total de unidades
     const totalUnits = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -19,7 +19,7 @@ const CartSidebar = ({ cartItems, onRemoveFromCart, isOpen, onClose }) => {
 
     return (
         <aside className={`cart-sidebar ${isOpen ? "open" : ""}`}>
-           
+
 
             <div className="cart-header">
                 <h2>Detalle de tu compra</h2>
@@ -39,12 +39,9 @@ const CartSidebar = ({ cartItems, onRemoveFromCart, isOpen, onClose }) => {
 
                         return (
                             <div className="cart-item" key={item.id}>
-                                <img
-                                    src={item.image}
-                                    alt={item.name}
-                                    className="cart-item-img"
-                                />
+
                                 <div className="cart-item-info">
+                                    <h3>{item.category}</h3>
                                     <h4>{item.name}</h4>
 
                                     {/* Precios */}
@@ -57,7 +54,21 @@ const CartSidebar = ({ cartItems, onRemoveFromCart, isOpen, onClose }) => {
                                         ${itemDiscounted.toFixed(2)}
                                     </p>
 
-                                    <p>Cantidad: {item.quantity}</p>
+                                    <div className="quantity-controls">
+                                        <button
+                                            className="qty-btn"
+                                            onClick={() => onRemoveFromCart(item.id)}
+                                        >
+                                            ➖
+                                        </button>
+                                        <span>{item.quantity}</span>
+                                        <button
+                                            className="qty-btn"
+                                            onClick={() => onAddToCart(item)}
+                                        >
+                                            ➕
+                                        </button>
+                                    </div>
 
                                     <button
                                         onClick={() => onRemoveFromCart(item.id)}
@@ -66,6 +77,11 @@ const CartSidebar = ({ cartItems, onRemoveFromCart, isOpen, onClose }) => {
                                         Quitar
                                     </button>
                                 </div>
+                                <img
+                                    src={item.image}
+                                    alt={item.name}
+                                    className="cart-item-img"
+                                />
                             </div>
                         );
                     })
@@ -87,6 +103,11 @@ const CartSidebar = ({ cartItems, onRemoveFromCart, isOpen, onClose }) => {
                     ) : (
                         <p>Total: ${totalOriginal.toFixed(2)}</p>
                     )}
+
+                    {/* Botón Vaciar carrito */}
+                    <button className="clear-cart-btn" onClick={onClearCart}>
+                        Vaciar carrito
+                    </button>
 
                     {/* Botón de WhatsApp */}
                     <a

@@ -2,32 +2,33 @@ import React from "react";
 import "./Cart.css";
 import { getGlobalDiscountRate } from "../../utils/discounts";
 
-const Cart = ({ cartItems, onRemoveFromCart }) => {
+const Cart = ({ cartItems, onRemoveFromCart, onAddToCart, onClearCart }) => {
     const totalUnits = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-    //  descuento global según total de unidades
+    // ✅ Descuento global según total de unidades
     const discountRate = getGlobalDiscountRate(totalUnits);
 
     const totalOriginal = cartItems.reduce(
         (acc, item) => acc + item.price * item.quantity,
         0
     );
-
     const totalDiscounted = totalOriginal - totalOriginal * discountRate;
 
+    // ✅ Mensajes de beneficio según hitos
     let benefitMessage = "";
     if (totalUnits < 6) {
         benefitMessage = `Comprá ${6 - totalUnits} unidades más y obtené 10% OFF`;
-    } else if (totalUnits < 20) {
-        benefitMessage = `Comprá ${20 - totalUnits} unidades obtené envio gratis!!`;
+    } else if (totalUnits < 15) {
+        benefitMessage = `¡Ya tenés 10% OFF! Comprá ${15 - totalUnits} unidades más y obtené envío gratis 🚚`;
     } else if (totalUnits < 24) {
-        benefitMessage = `Comprá ${24 - totalUnits} unidades más y obtené 15% OFF`;
+        benefitMessage = `¡Ya tenés envío gratis! Comprá ${24 - totalUnits} unidades más y obtené 15% OFF`;
     } else if (totalUnits < 60) {
-        benefitMessage = `Comprá ${60 - totalUnits} unidades más y obtené 25% OFF`;
+        benefitMessage = `¡Ya tenés 15% OFF + envío gratis! Comprá ${60 - totalUnits} unidades más y obtené 25% OFF`;
     } else {
-        benefitMessage = "¡Ya tenés 25% OFF + envío gratis en tu compra!";
+        benefitMessage = "🎉 ¡Ya tenés 25% OFF + envío gratis en tu compra!";
     }
 
+    // ✅ Generar mensaje de WhatsApp
     const generateWhatsAppMessage = () => {
         let message = "¡Hola! Quiero hacer el siguiente pedido:\n\n";
         cartItems.forEach((item) => {
@@ -59,26 +60,41 @@ const Cart = ({ cartItems, onRemoveFromCart }) => {
 
                             return (
                                 <li key={item.id} className="cart-item">
+                                    {/* bloque superior: nombre y categoría */}
                                     <div className="item-info">
+                                        <span className="item-category">{item.category}</span>
                                         <span className="item-name">{item.name}</span>
-                                        <span className="item-quantity">x{item.quantity}</span>
-
-                                        {discountRate > 0 && (
-                                            <span className="item-price-original">
-                                                ${itemOriginal.toFixed(2)}
-                                            </span>
-                                        )}
-
-                                        <span className="item-price">
-                                            ${itemDiscounted.toFixed(2)}
-                                        </span>
                                     </div>
-                                    <button
-                                        className="remove-btn"
-                                        onClick={() => onRemoveFromCart(item.id)}
-                                    >
-                                        Quitar
-                                    </button>
+
+                                    {/* bloque inferior: cantidad + precios */}
+                                    <div className="item-info">
+                                        <div className="quantity-controls">
+                                            <button
+                                                className="qty-btn"
+                                                onClick={() => onRemoveFromCart(item.id)}
+                                            >
+                                                -
+                                            </button>
+                                            <span className="item-quantity">{item.quantity}</span>
+                                            <button
+                                                className="qty-btn"
+                                                onClick={() => onAddToCart(item)}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+
+                                        <div>
+                                            {discountRate > 0 && (
+                                                <span className="item-price-original">
+                                                    ${itemOriginal.toFixed(2)}
+                                                </span>
+                                            )}
+                                            <span className="item-price">
+                                                ${itemDiscounted.toFixed(2)}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </li>
                             );
                         })}
@@ -100,6 +116,11 @@ const Cart = ({ cartItems, onRemoveFromCart }) => {
                             <p>Total: ${totalOriginal.toFixed(2)}</p>
                         )}
                     </div>
+
+                    {/* Botón Vaciar Carrito */}
+                    <button className="clear-cart-btn" onClick={onClearCart}>
+                        Vaciar carrito
+                    </button>
 
                     <a
                         className="whatsapp-btn"
