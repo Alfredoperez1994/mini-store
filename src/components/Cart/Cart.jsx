@@ -35,7 +35,7 @@ const Cart = ({ cartItems, onRemoveFromCart, onAddToCart, onClearCart }) => {
             const itemOriginal = item.price * item.quantity;
             const itemDiscounted = itemOriginal - itemOriginal * discountRate;
 
-            message += `• ${item.name} x${item.quantity} - $${itemDiscounted.toFixed(
+            message += `• [${item.category}] ${item.name} x${item.quantity} - $${itemDiscounted.toFixed(
                 2
             )}\n`;
         });
