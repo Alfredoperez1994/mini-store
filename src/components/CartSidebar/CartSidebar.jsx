@@ -59,14 +59,14 @@ const CartSidebar = ({ cartItems, onAddToCart, onRemoveFromCart, onClearCart, is
                                             className="qty-btn"
                                             onClick={() => onRemoveFromCart(item.id)}
                                         >
-                                            ➖
+                                            -
                                         </button>
                                         <span>{item.quantity}</span>
                                         <button
                                             className="qty-btn"
                                             onClick={() => onAddToCart(item)}
                                         >
-                                            ➕
+                                            +
                                         </button>
                                     </div>
 
